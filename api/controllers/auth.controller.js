@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken';
 
 export const signup = async (req, res, next) => {
   const { username, email, password } = req.body;
+
   if (
     !username ||
     !email ||
@@ -23,6 +24,7 @@ export const signup = async (req, res, next) => {
     email,
     password: hashedPassword,
   });
+
   try {
     await newUser.save();
     res.json('Signup successful');
@@ -53,7 +55,9 @@ export const signin = async (req, res, next) => {
 
     res
       .status(200)
-      .cookie('access_token', token, { httpOnly: true })
+      .cookie('access_token', token, {
+        httpOnly: true,
+      })
       .json(rest);
   } catch (error) {
     next(error);
@@ -66,7 +70,7 @@ export const google = async (req, res, next) => {
     const user = await User.findOne({ email });
     if (user) {
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-      const { password, ...rest } = user._id;
+      const { password, ...rest } = user._doc;
       res
         .status(200)
         .cookie('access_token', token, {
