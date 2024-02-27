@@ -10,8 +10,7 @@ export default function DashSidebar() {
     const urlParams = new URLSearchParams(location.search);
     const tabFromUrl = urlParams.get('tab');
     tabFromUrl && setTab(tabFromUrl);
-  }),
-    [location.search];
+  }, [location.search]);
   return (
     <Sidebar className="w-full md:w-56">
       <Sidebar.Items>
@@ -26,7 +25,7 @@ export default function DashSidebar() {
               Profile
             </Sidebar.Item>
           </Link>
-
+          {/* remember */}
           <Sidebar.Item icon={HiArrowSmRight} className="cursor-pointer">
             Sign Out
           </Sidebar.Item>

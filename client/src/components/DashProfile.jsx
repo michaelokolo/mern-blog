@@ -11,7 +11,7 @@ export default function DashProfile() {
           <img
             src={currentUser.profilePicture}
             alt="user"
-            className="rounded-full w-full h-full border-8 object-cover border-[lightgray]"
+            className="rounded-full w-full h-full object-cover border-8 border-[lightgray]"
           />
         </div>
         <TextInput
