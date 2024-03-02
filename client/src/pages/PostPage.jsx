@@ -9,7 +9,6 @@ export default function PostPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [post, setPost] = useState(null);
-  console.log(post);
 
   useEffect(() => {
     const fetchPosts = async () => {
