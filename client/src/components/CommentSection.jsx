@@ -42,6 +42,7 @@ export default function CommentSection({ postId }) {
       setCommentError(error.message);
     }
   };
+
   useEffect(() => {
     const getComments = async () => {
       try {
@@ -69,15 +70,15 @@ export default function CommentSection({ postId }) {
       if (res.ok) {
         const data = await res.json();
         setComments(
-          comments.map((comment) => {
+          comments.map((comment) =>
             comment._id === commentId
               ? {
                   ...comment,
                   likes: data.likes,
                   numberOfLikes: data.likes.length,
                 }
-              : comment;
-          })
+              : comment
+          )
         );
       }
     } catch (error) {
